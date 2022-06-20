@@ -2,24 +2,20 @@
     <section class="hero">
         <div class="hero-text">
             <h2>
-                Home
+                Panier
             </h2>
         </div>
         <div class="dishes">
-            <v-row no-gutters>
+            <v-row>
                 <v-col>
                     <v-card class="pa-2" outlined tile>
-                    <div v-if="Orders.length > 0">
-                        <div v-for="Plat in Orders" :key="Plat">
-                        <OrderInCart :menuId="Plat"/>
-                        </div>
-                    </div>
-                    <div v-else>
-                        <p>Votre Panier est vide</p>
-                    </div>
+                      <div>
+                          <h1>panier plein</h1>
+                      </div>
+                      <div>
+                          <p>Votre Panier est vide</p>
+                      </div>
                     </v-card>
-                </v-col>
-                <v-col>
                     <v-card class="pa-2" outlined tile>
                     <DeliveryInfos :deliveryData="{ adresse: 'test', number: 'testcommand',
                     code: 'pricecommand', complement: 'adressecommande', }" />
@@ -39,7 +35,7 @@ export default {};
 
 <style lang="scss" scoped>
 .hero {
-  background: url("../assets/BN.jpg");
+  //background: url("../assets/BN.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size:cover;

@@ -17,7 +17,8 @@
           :type="showPassword ? 'text' : 'password'"
           prepend-icon="mdi-lock"
           :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-          @click:append="showPassword = !showPassword"/>
+          @click:append="showPassword = !showPassword" 
+          required/>
         </v-card-text>
         <v-divider></v-divider>
           <v-card-actions>
@@ -48,7 +49,7 @@ export default {
   text-align: center;
 }
 .hero {
-  background: url("../assets/login.jpg");
+  background: url("../assets/bkgRegister.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size:cover;

@@ -9,12 +9,12 @@ Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
+    path: '/Home',
     name: 'HomeView',
     component: HomeView
   },
   {
-    path: '/login',
+    path: '/',
     name: 'Login',
     component: Login
   },

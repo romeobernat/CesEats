@@ -21,7 +21,7 @@ export default {
   text-align: center;
 }
 .hero {
-  background: url("../assets/login.jpg");
+ background: url("../assets/bkgRegister.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size:cover;
