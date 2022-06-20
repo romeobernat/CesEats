@@ -116,8 +116,8 @@ header {
       border-bottom: 1px solid transparent;
 
       &:hover{
-        color: rgb(170, 228, 196);
-        border-color: rgb(170, 228, 196);
+        color: #00c668;
+        border-color: #00c668;
       }
     }
 

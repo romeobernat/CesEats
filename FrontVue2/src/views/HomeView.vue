@@ -4,18 +4,18 @@
     <v-container fluid>
         <v-col cols="12">
           <v-card class="mx-auto rounded-xl" flat>
-            <v-img src="../assets/cover2.png" height="100%" max-width="100%" contain>
-            <br><br><br>
+              <v-img src="../assets/Sushi.jpg" height="100%" max-width="100%" contain>
             <br><br><br>
               <v-card-title class="top ml-10">
-                <h2 class="title1">Order your</h2>
+                <h2 class="title1 white--text">Order your</h2>
               </v-card-title>
               <v-card-title class="ml-10 mt-n8">
-                <h2 class="title2">Food</h2>
+                <h2 class="title2 white--text">Food</h2>
               </v-card-title>
               <v-card-text class="ml-10">
-                <h3 class="green--text">#Free Delivery</h3>
+                <h3>#Free Delivery</h3>
               </v-card-text>
+              
               <v-card-text class="ml-10">
                 <v-row>
                   <v-col cols="4">
@@ -34,7 +34,7 @@
                   </v-col>
                   <v-col  class="marginLeft">
                     <v-btn
-                      color="green"
+                      color="#00c668"
                       rounded
                       dark
                       x-large
@@ -48,10 +48,10 @@
             </v-img>
           </v-card>
 
-          <v-toolbar flat color="transparent" class="mt-5">
+          <v-toolbar flat class="mt-5">
             <v-toolbar-title class="text-h6">Popular Product</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn rounded color="green" dark class="px-8">See All</v-btn>
+            <v-btn rounded color="#00c668" dark class="px-8">See All</v-btn>
           </v-toolbar>
           <Product/>
         </v-col>
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import Product from "../components/Product";
+import Product from "../components/Product.vue";
 
 export default {
   components:{
@@ -70,6 +70,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h3{
+  color: #00c668;
+}
 .marginLeft {
   margin-left: -90px;
 }
@@ -80,10 +83,10 @@ export default {
   margin-bottom: 100px;
 }
 .v-card.borderme {
-  border: 2px solid green !important;
+  border: 2px solid #00c668 !important;
 }
 .v-card.borderout {
-  border: 1px solid #d5f0db !important;
+  border: 1px solid #00c668 !important;
 }
 .v-btn:not(.v-btn--round).v-size--default.add {
   min-width: 0px !important;

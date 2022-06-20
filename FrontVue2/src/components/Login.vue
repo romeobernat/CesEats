@@ -5,7 +5,8 @@
           <h2>
               Connectez vous
           </h2>
-      </div>
+        </div>
+        <br><br><br>
       <v-content>
       <div class="hero-text container">
        <v-card width="500" class="mx-auto mt-9">
@@ -61,7 +62,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: rgb(6, 193, 103);
+    color: #00c668;
     h4 {
       text-transform: uppercase;
       font-size: 22px;
