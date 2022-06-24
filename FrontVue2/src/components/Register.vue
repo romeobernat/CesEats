@@ -12,24 +12,26 @@
             <div class="hero-text container">
           <v-card width="500" class="mx-auto mt-9">
             <v-card-text>
-                <v-text-field label="Nom" prepend-icon="mdi-account-circle"/>
-                <v-text-field label="Prénom" prepend-icon="mdi-account-circle"/>
-                <v-text-field label="Numéro de téléphone" prepend-icon="mdi-phone"/>
-                <v-text-field label="E-mail" prepend-icon="mdi-email"/>
+                <v-text-field v-model="lastname" label="Nom" prepend-icon="mdi-account-circle"/>
+                <v-text-field v-model="firstname" label="Prénom" prepend-icon="mdi-account-circle"/>
+                <v-text-field v-model="number" label="Numéro de téléphone" prepend-icon="mdi-phone"/>
+                <v-text-field v-model="email" label="E-mail" prepend-icon="mdi-email"/>
                 <v-text-field 
+                v-model="password"
                 label="Mot de passe" 
                 :type="showPassword ? 'text' : 'password'"
                 prepend-icon="mdi-lock"
                 :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                 @click:append="showPassword = !showPassword"/>
                 <v-text-field 
+                v-model="repassword"
                 label="Confirmer le mot de passe" 
                 :type="showPassword ? 'text' : 'password'"
                 prepend-icon="mdi-lock"
                 :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                 @click:append="showPassword = !showPassword"/>
-                <v-text-field label="Adresse" prepend-icon="mdi-map-marker"/>
-                <v-text-field label="Code de parrainage" prepend-icon="mdi-account-multiple"/>
+                <v-text-field v-model="address" label="Adresse" prepend-icon="mdi-map-marker"/>
+                <v-text-field v-model="code" label="Code de parrainage" prepend-icon="mdi-account-multiple"/>
             </v-card-text>
               <v-card-actions>
                <v-btn color="success">Valider</v-btn>
@@ -46,10 +48,11 @@
 </template>
 
 <script>
+
 export default {
     name: "Register",
     data: () => ({
-    
+
   }),
 };
 </script>
