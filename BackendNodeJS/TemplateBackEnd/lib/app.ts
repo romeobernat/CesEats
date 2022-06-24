@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import {Routes} from "./config/routes";
+import {mysql} from "./config/mysql"
 
 class App {
   public app: express.Application;
@@ -10,6 +11,7 @@ class App {
     this.app = express();
     this.config();
     this.routePrv.routes(this.app);
+    mysql.sync();
   }
 
   private config(): void {
