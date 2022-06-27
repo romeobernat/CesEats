@@ -1,9 +1,8 @@
 import {Table, Model, Column, DataType, BelongsToAssociation, Association, BelongsTo, HasMany} from "sequelize-typescript";
-import {Account} from "./account.model";
 
 @Table({
-    timestamps: true,
-    tableName: "country",
+    timestamps: false,
+    tableName: "Country",
 })
 
 export class Country extends Model {
