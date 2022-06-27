@@ -1,7 +1,7 @@
 <template>
    <div class="home">
     <section >
-        <div class="hero-text">
+        <div class="hero-text white--text">
           <h2>
               Connectez vous
           </h2>

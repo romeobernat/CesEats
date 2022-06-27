@@ -4,17 +4,23 @@ import HomeView from '../views/HomeView.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Cart from '../views/Cart.vue'
+import CustomerView from '../views/roles/CustomerView.vue'
+import DeliveryManView from '../views/roles/DeliveryManView.vue'
+import Help from '../views/Help.vue'
+import Products from '../views/Products.vue'
+
+
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/Home',
+    path: '/',
     name: 'HomeView',
     component: HomeView
   },
   {
-    path: '/',
+    path: '/login',
     name: 'Login',
     component: Login
   },
@@ -27,6 +33,26 @@ const routes: Array<RouteConfig> = [
     path: '/cart',
     name: 'Cart',
     component: Cart
+  },
+  {
+    path: '/client',
+    name: 'client',
+    component: CustomerView
+  },
+  {
+    path: '/livreur',
+    name: 'livreur',
+    component: DeliveryManView
+  },
+  {
+    path: '/restaurants/:id/:name',
+    name: 'Products',
+    component: Products
+  },
+  {
+    path: '/aide',
+    name: 'aide',
+    component: Help
   },
   {
     path: '/about',

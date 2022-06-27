@@ -1,15 +1,16 @@
 <template>
 <header :class="{'scrolled-nav': scrolledNav}">
-  <nav>
+  <nav id="navbar-component">
     <div class="branding">
       <v-toolbar-title class="ml-4">
+        <a href="/">
       <span class="green--text">CES</span><strong>EAT</strong>
+        </a>
     </v-toolbar-title>
     </div>
     <ul v-show="!mobile" class="sidebar">
-      <li><router-link class="link" :to="{ name: 'HomeView'}">Home</router-link></li>
-      <li><router-link class="link" :to="{ name: 'AboutView'}">About</router-link></li>
-      <li><router-link class="link" :to="{ name: 'Login'}">Authentification</router-link></li>
+      <li><router-link class="link" :to="{ name: 'HomeView'}">Restaurants</router-link></li>
+      <li><router-link class="link" :to="{ name: 'Register'}">Authentification</router-link></li>
       <li><router-link class="link" :to="{ name: 'Cart'}">Panier</router-link></li>
     </ul>
     <div class="icon">
@@ -18,8 +19,8 @@
     <transition name="mobile-nav">
       <ul v-show="mobileNav" class="dropdown-nav">
         <li><router-link class="link" :to="{ name: 'HomeView'}">Home</router-link></li>
-        <li><router-link class="link" :to="{ name: 'AboutView'}">About</router-link></li>
         <li><router-link class="link" :to="{ name: 'Login'}">Authentification</router-link></li>
+        <li><router-link class="link" :to="{ name: 'Cart'}">Panier</router-link></li>
       </ul>
     </transition>
   </nav>
@@ -78,6 +79,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#navbar-component a {
+  text-decoration: none;
+  box-shadow: none;
+  color: white;
+}
 header {
   background-color: rgb(9, 37, 37, 0.95);
   z-index: 99;
@@ -164,14 +170,14 @@ header {
       width: 100%;
       max-width: 250px;
       height: 100%;
-      background-color: white;
+      background-color: rgb(9, 37, 37);
       top: 0;
       left: 0;
 
       li{
         margin-left: 0;
         .link{
-          color: black;
+          color: rgb(0, 0, 0);
         }
       }
     }

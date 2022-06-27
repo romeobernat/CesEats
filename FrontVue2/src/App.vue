@@ -4,7 +4,7 @@
       <Sidebar />
     </v-main>
     <router-view />
-    <Footer />
+    <Footer/>
   </v-app>
 </template>
 

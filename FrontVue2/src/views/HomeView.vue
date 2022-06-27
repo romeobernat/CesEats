@@ -48,23 +48,22 @@
             </v-img>
           </v-card>
 
-          <v-toolbar flat class="mt-5">
-            <v-toolbar-title class="text-h6">Popular Product</v-toolbar-title>
+          <v-toolbar flat class="mt-5">            
             <v-spacer></v-spacer>
             <v-btn rounded color="#00c668" dark class="px-8">See All</v-btn>
           </v-toolbar>
-          <Product/>
+          <Restaurants/>
         </v-col>
     </v-container>
   </v-app>
 </template>
 
 <script>
-import Product from "../components/Product.vue";
+import Restaurants from "../components/Restaurants.vue";
 
 export default {
   components:{
-    Product,
+    Restaurants,
   }
 };
 </script>
