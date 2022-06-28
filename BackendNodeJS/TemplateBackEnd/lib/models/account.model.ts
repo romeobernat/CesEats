@@ -5,7 +5,7 @@ import {Country} from "./country.model";
 
 @Table({
     timestamps: true,
-    tableName: "account",
+    tableName: "Account",
 })
 
 export class Account extends Model {
@@ -87,8 +87,5 @@ export class Account extends Model {
 
     @BelongsTo(() => City, "postal_code_fk")
     city: City
-
-    @BelongsTo(() => Country, "country_fk")
-    country: Country
     
 }
