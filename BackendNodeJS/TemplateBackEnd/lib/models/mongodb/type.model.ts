@@ -33,4 +33,4 @@ const TypeSchema = new Schema<type>({
 
 const Type = model('Type', TypeSchema)
 
-export {Type};
+export default Type;
