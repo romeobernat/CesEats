@@ -1,4 +1,7 @@
 import { Router } from "express";
+import * as RestaurantController from "../controllers/mongodb/restaurant.controller";
+
+// CRUD MYSQL
 
 import {
   createAccount,
@@ -32,7 +35,15 @@ import {
   getAccountTypeById,
 } from "../controllers/mysql/accountType.controller";
 
+// CRUD MONGODB
+
+import {
+  getAllRestaurant,
+} from "../controllers/mongodb/restaurant.controller";
+
 const router = Router();
+
+// ROUTES MYSQL AVEC SEQUELIZE
 
 router.post("/account/", createAccount);
 router.get("/account/", getAllAccount);
@@ -57,5 +68,33 @@ router.get("/accountType/", getAllAccountType);
 router.get("/accountType/:id_type", getAccountTypeById);
 router.put("/accountType/:id_type", updateAccountType);
 router.delete("/accountType/:id_type", deleteAccountType);
+
+
+
+// ROUTES MONGODB AVEC MONGOOSE
+
+router.get("/restaurant/", getAllRestaurant);
+
+/*
+router.get('/', async (req, res)=> {
+    const data = await RestaurantController.getAllRestaurant();
+    res.json(data);
+    })
+
+router.post('/', function (req, res){
+        RestaurantController.createRestaurant(req.body)
+    })
+
+router.get('/:id', function (req, res) {
+        RestaurantController.getOneRestaurant(req).then((restaurant) => {
+            res.json(restaurant)
+        })
+    })
+    
+router.delete('/:id', function (req, res)
+    {
+            RestaurantController.deleteArticle(req.params.id)
+    })
+*/
 
 export default router;

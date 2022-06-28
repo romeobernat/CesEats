@@ -2,6 +2,7 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import router from "./config/routes";
 import {mysql} from "./config/mysql"
+require('./config/mongodb');
 
 class App {
   public app: express.Application;
