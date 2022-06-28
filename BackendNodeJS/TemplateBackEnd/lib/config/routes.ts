@@ -6,7 +6,7 @@ import {
   getAllAccount,
   updateAccount,
   getAccountById,
-} from "../controllers/account.controller";
+} from "../controllers/mysql/account.controller";
 
 import {
   createCountry,
@@ -14,7 +14,7 @@ import {
   getAllCountry,
   updateCountry,
   getCountryById,
-} from "../controllers/country.controller";
+} from "../controllers/mysql/country.controller";
 
 import {
   createCity,
@@ -22,7 +22,7 @@ import {
   getAllCity,
   updateCity,
   getCityById,
-} from "../controllers/city.controller";
+} from "../controllers/mysql/city.controller";
 
 import {
   createAccountType,
@@ -30,7 +30,7 @@ import {
   getAllAccountType,
   updateAccountType,
   getAccountTypeById,
-} from "../controllers/accountType.controller";
+} from "../controllers/mysql/accountType.controller";
 
 const router = Router();
 
