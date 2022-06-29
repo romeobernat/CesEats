@@ -1,25 +1,41 @@
 import Commande from "../../models/mongodb/commande.model"
 
-export const getAllCommande = async () => {
-    const commandes = await Commande.find();
-    return commandes;
-}
+export const getAllCommande = async (req, res, next) => {
+    const allCommande = await Commande.find();
+    return res
+      .status(200)
+      .json({ message: "Todo fetched successfully", data: allCommande });
+  };
 
-export const createCommande = (CommandeData:JSON) => {
-    const commande = new Commande(CommandeData);
-    return commande.save();
-}
+export const createCommande = async (req, res, next) => {
+    var commande = await Commande.create({ ...req.body });
+    return res
+      .status(200)
+      .json({ message: "Todo created successfully", data: commande });
+  };
 
-export const getCommandeById = async (req:any) => {
-    const commande = await Commande.findById(req.params.restau_id);
-    return commande;
-}
+export const getCommandeById = async (req, res, next) => {
+    const { _id } = req.params;
+    const CommandeById = await Commande.findById(_id);
+    return res
+      .status(200)
+      .json({ message: "Todo fetched successfully", data: CommandeById });
+  };
 
-export const updateCommande = async (req:any) => {
-    const commande = await Commande.findByIdAndUpdate(req.params.id, req.body);
-    commande.save();
-}
+export const updateCommande = async (req, res, next) => {
+  const { _id } = req.params;
+  await Commande.findByIdAndUpdate({ _id }, { ...req.body });
+  const updatedCommande = await Commande.findById(_id);
+  return res
+    .status(200)
+    .json({ message: "Todo updated successfully", data: updatedCommande});
+};
 
-export const deleteCommande = (req:any) => {
-    Commande.findByIdAndDelete(req.params.id)
+export const deleteCommande = async (req, res, next) => {
+  const { _id } = req.params;
+  const deletedTodo = await Commande.findById(_id);
+  await Commande.findByIdAndDelete(_id);
+  return res
+    .status(200)
+    .json({ message: "Todo deleted successfully", data: deletedTodo });
 };

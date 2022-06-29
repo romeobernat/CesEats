@@ -1,9 +1,11 @@
 import Restaurant from "../../models/mongodb/restaurant.model"
 
-export const getAllRestaurant = async () => {
-    const restaurants = await Restaurant.find();
-    return restaurants;
-}
+export const getAllRestaurant = async (req, res, next) => {
+    const allRestaurant = await Restaurant.find();
+    return res
+      .status(200)
+      .json({ message: "Todo fetched successfully", data: allRestaurant });
+  };
 
 export const createRestaurant = async (req, res, next) => {
     var restaurant = await Restaurant.create({ ...req.body });
@@ -12,16 +14,28 @@ export const createRestaurant = async (req, res, next) => {
       .json({ message: "Todo created successfully", data: restaurant });
   };
 
-export const getRestaurantById = async (req:any) => {
-    const restaurant = await Restaurant.findById(req.params.restau_id);
-    return restaurant;
-}
+export const getRestaurantById = async (req, res, next) => {
+    const { _id } = req.params;
+    const RestaurantById = await Restaurant.findById(_id);
+    return res
+      .status(200)
+      .json({ message: "Todo fetched successfully", data: RestaurantById });
+  };
 
-export const updateRestaurant = async (req:any) => {
-    const restaurant = await Restaurant.findByIdAndUpdate(req.params.id, req.body);
-    restaurant.save();
-}
+export const updateRestaurant = async (req, res, next) => {
+  const { _id } = req.params;
+  await Restaurant.findByIdAndUpdate({ _id }, { ...req.body });
+  const updatedRestaurant = await Restaurant.findById(_id);
+  return res
+    .status(200)
+    .json({ message: "Todo updated successfully", data: updatedRestaurant});
+};
 
-export const deleteRestaurant = (req:any) => {
-    Restaurant.findByIdAndDelete(req.params.id)
+export const deleteRestaurant = async (req, res, next) => {
+  const { _id } = req.params;
+  const deletedTodo = await Restaurant.findById(_id);
+  await Restaurant.findByIdAndDelete(_id);
+  return res
+    .status(200)
+    .json({ message: "Todo deleted successfully", data: deletedTodo });
 };

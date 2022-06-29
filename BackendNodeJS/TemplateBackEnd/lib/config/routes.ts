@@ -111,32 +111,32 @@ router.delete("/accountType/:id_type", deleteAccountType);
 
 router.post("/restaurant/", createRestaurant);
 router.get("/restaurant/", getAllRestaurant);
-router.get("/restaurant/:id_person", getRestaurantById);
-router.put("/restaurant/:id_person", updateRestaurant);
-router.delete("/restaurant/:id_person", deleteRestaurant);
+router.get("/restaurant/:_id", getRestaurantById);
+router.put("/restaurant/:_id", updateRestaurant);
+router.delete("/restaurant/:_id", deleteRestaurant);
 
 router.post("/article/", createArticle);
 router.get("/article/", getAllArticle);
-router.get("/article/:article", getArticleById);
-router.put("/article/:article", updateArticle);
-router.delete("/article/:article", deleteArticle);
+router.get("/article/:_id", getArticleById);
+router.put("/article/:_id", updateArticle);
+router.delete("/article/:_id", deleteArticle);
 
 router.post("/articleCommande/", createArticleCommande);
 router.get("/articleCommande/", getAllArticleCommande);
-router.get("/articleCommande/:postal_code", getArticleCommandeById);
-router.put("/articleCommande/:postal_code", updateArticleCommande);
-router.delete("/articleCommande/:postal_code", deleteArticleCommande);
+router.get("/articleCommande/:_id", getArticleCommandeById);
+router.put("/articleCommande/:_id", updateArticleCommande);
+router.delete("/articleCommande/:_id", deleteArticleCommande);
 
 router.post("/commande/", createCommande);
 router.get("/commande/", getAllCommande);
-router.get("/commande/:id_type", getCommandeById);
-router.put("/commande/:id_type", updateCommande);
-router.delete("/commande/:id_type", deleteCommande);
+router.get("/commande/:_id", getCommandeById);
+router.put("/commande/:_id", updateCommande);
+router.delete("/commande/:_id", deleteCommande);
 
 router.post("/type/", createType);
 router.get("/type/", getAllType);
-router.get("/type/:id_type", getTypeById);
-router.put("/type/:id_type", updateType);
-router.delete("/type/:id_type", deleteType);
+router.get("/type/:_id", getTypeById);
+router.put("/type/:_id", updateType);
+router.delete("/type/:_id", deleteType);
 
 export default router;
