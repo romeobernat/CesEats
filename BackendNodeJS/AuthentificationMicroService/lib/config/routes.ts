@@ -87,7 +87,7 @@ router.get("/account/", getAllAccount);
 router.get("/account/:id_person", getAccountById);
 router.put("/account/:id_person", updateAccount);
 router.delete("/account/:id_person", deleteAccount);
-router.get("/account/:mail/:password", isAccountTrue);
+router.post("/account/login", isAccountTrue);
 
 router.post("/country/", createCountry);
 router.get("/country/", getAllCountry);

@@ -51,12 +51,10 @@ export const updateAccount: RequestHandler = async (req, res, next) => {
 };
 
 export const isAccountTrue: RequestHandler = async (req, res, next) => {
-  const { mail } = req.params;
-  const { password } = req.params;
   const AccountTrue: Account | null = await Account.findOne({
     where: {
-      mail: mail,
-      password: password
+      mail: { ...req.body }.mail,
+      password: { ...req.body }.password
     }
   });
   if(AccountTrue != null){
