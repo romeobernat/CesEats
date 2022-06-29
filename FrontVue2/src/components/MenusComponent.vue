@@ -58,6 +58,21 @@ export default {
     model: [],
     reveal: false
   }),
+  methods: {
+    addToCart (item) {
+      this.$store.commit('addToCart', item)
+    },
+    removeFromCart (item) {
+      this.$store.commit('removeFromCart', item)
+    },
+    fetchQuantity (item) {
+      const mp = this.cart.cart.find(mp => mp.id === item.id && mp.name === item.name)
+      if (mp) {
+        return mp.quantity
+      }
+      return 0
+    }
+  },
   computed: {
     productsFromMenu () {
       return [

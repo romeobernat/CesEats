@@ -11,7 +11,7 @@
                 </div>
             </a>
           </v-col>
-          <ul v-show="!mobile" class="sidebar">
+          <ul class="sidebar">
             <li><router-link class="link" :to="{ name: 'aide'}">Obtenir de l'aide</router-link></li>
             <li><router-link class="link" :to="{ name: 'client'}">Comment ca marche ?</router-link></li>
             <li><router-link class="link" :to="{ name: 'livreur'}">Devenez coursier-partenaire</router-link></li> 
@@ -39,7 +39,7 @@
 
 <script>
 export default {
-  name: 'FooterComponent',
+  name: 'Footer',
   data: () => ({
     icons: [
       'mdi-facebook',
