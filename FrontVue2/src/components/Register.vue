@@ -5,18 +5,15 @@
           <span class="text-h4">Inscription</span>
         </v-card-title>
         <v-form
-            v-model="validate"
             ref="registerForm"
-            @submit.prevent="registerSubmit"
+            @submit.prevent="onCreatePost"
             lazy-validation
         >
           <v-container>
             <v-row>
              <v-col cols="4" md="2">
               <v-select
-                v-model="user.role"
-                :items="roles"
-                :rules="roleRules"
+                v-model="role"
                 label="Rôle*"
                 required
               ></v-select>
@@ -28,36 +25,31 @@
             <v-row>
               <v-col cols="12" md="6">
                 <v-text-field
-                    v-model="user.firstName"
-                    :rules="firstNameRules"
+                    v-model="firstName"
                     label="Prénom*"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
-                    v-model="user.lastName"
-                    :rules="lastNameRules"
+                    v-model="lastName"
                     label="Nom*"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
-                    v-model="user.mail"
-                    :rules="emailRules"
+                    v-model="mail"
                     label="E-mail*"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
-                    v-model="user.phone"
-                    :rules="phoneRules"
+                    v-model="phone"
                     label="Téléphone*"
                 ></v-text-field>
               </v-col>
               <v-col cols="6" md="4">
                 <v-text-field
-                    v-model="user.pwd"
-                    :rules="passwordRules"
+                    v-model="pwd"
                     label="Mot de passe*"
                     :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                     :type="show1 ? 'text' : 'password'"
@@ -70,22 +62,17 @@
             </v-card-title>
             <v-row>
               <v-col cols="12" md="4">
-                <v-text-field
-                    v-model="user.city"
-                    label="Ville"
-                ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
-                    v-model="user.address"
+                    v-model="address"
                     label="Adresse"
                 ></v-text-field>
               </v-col>
               <v-col cols="4" md="2">
                 <v-text-field
-                    v-model="user.zipCode"
+                    v-model="zipCode"
                     label="Code postal"
-                    :rules="zipRules"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -96,7 +83,6 @@
             color="#00c668"
             class="mr-4 white--text"
             type="submit"
-            @click="validate"
             >
             Enregistrer
             </v-btn>
@@ -108,58 +94,41 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'Register',
-  data: () => ({
-    firstNameRules: [
-      v => !!v || 'Veuillez renseigner votre prénom'
-    ],
-    lastNameRules: [
-      v => !!v || 'Veuillez renseigner votre nom'
-    ],
-    emailRules: [
-      v => !!v || 'Veuillez renseigner votre E-mail',
-      v => /.+@.+/.test(v) || 'le format est incorrect'
-    ],
-    passwordRules: [
-      v => !!v || 'Veuillez renseigner votre mot de passe',
-      v => /^(?=.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$/.test(v) || 'Le mot de passe doit contenir au moins 8 caractères dont minimum 1 minuscule, 1 majuscule et 1 chiffre'
-    ],
-    roleRules: [
-      v => !!v || 'Veuillez sélectionner votre rôle'
-    ],
-    phoneRules: [
-      v => !!v || 'Veuillez renseigner votre numéro de téléphone',
-      v => /^(0|\+33)[1-9]([-. ]?[0-9]{2}){4}$/.test(v) || 'Format incorrect (+33xx ou 0xx)'
-    ],
-    zipRules: [
-      v => /[0-9].*$/.test(v) || 'Format incorrect'
-    ],
-    user: {
-      mail: '',
-      pwd: '',
-      role: null,
-      city: '',
-      zipCode: '',
-      address: '',
-      firstName: '',
-      lastName: '',
-      phone: ''
-    },
-    show1: false,
-    roles: [
-      'Client',
-      'Restaurateur',
-      'Livreur'
-    ]
-  }),
-  methods: {
-    registerSubmit () {
-      if (this.$refs.registerForm.validate()) {
-        this.$refs.registerForm.reset()
+    data(){
+      return{
+          mail: '',
+          pwd: '',
+          role: 1,
+          zipCode:13800,
+          address: '',
+          firstName: '',
+          lastName: '',
+          BirthDay: "1962-04-23",
+          phone: 9
       }
-    }
-  }
+  },
+   methods: {
+    onCreatePost(){
+        axios
+            .post('http://localhost:3000/account', {
+              mail:this.mail, 
+              password:this.pwd,
+              postal_code_fk:this.zipCode,
+              address:this.address,
+              firstName:this.firstName,
+              lastname:this.lastName,
+              birth_date:this.BirthDay,
+              phone_number:this.phone,
+              })
+            .then((response) => {
+            console.log(response);     
+    });
+  },
+}
 }
 </script>
 
@@ -167,5 +136,4 @@ export default {
 #v-card {
     margin-top: 20px;
 }
-
 </style>

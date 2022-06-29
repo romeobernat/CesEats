@@ -1,7 +1,8 @@
-import * as express from "express";
+import express from "express";
 import * as bodyParser from "body-parser";
 import router from "./config/routes";
-import {mysql} from "./config/mysql"
+import {mysql} from "./config/mysql";
+import cors from "cors"
 require('./config/mongodb');
 
 class App {
@@ -11,7 +12,9 @@ class App {
     this.app = express();
     this.config();
     mysql.sync();
-    this.app.use("/", router)
+    this.app.use(cors());
+    this.app.use("/", router);
+    
   }
 
   private config(): void {
