@@ -39,42 +39,42 @@ import {
 
 import {
   createRestaurant,
-  //deleteRestaurant,
+  deleteRestaurant,
   getAllRestaurant,
-  //updateRestaurant,
-  //getRestaurantById,
+  updateRestaurant,
+  getRestaurantById,
 } from "../controllers/mongodb/restaurant.controller";
 
 import {
   createArticle,
-  //deleteArticle,
+  deleteArticle,
   getAllArticle,
-  //updateArticle,
-  //getArticleById,
+  updateArticle,
+  getArticleById,
 } from "../controllers/mongodb/article.controller";
 
 import {
   createArticleCommande,
-  //deleteArticleCommande,
+  deleteArticleCommande,
   getAllArticleCommande,
-  //updateArticleCommande,
-  //getArticleCommandeById,
+  updateArticleCommande,
+  getArticleCommandeById,
 } from "../controllers/mongodb/articleCommande.controller";
 
 import {
   createCommande,
-  //deleteCommande,
+  deleteCommande,
   getAllCommande,
-  //updateCommande,
-  //getCommandeById,
+  updateCommande,
+  getCommandeById,
 } from "../controllers/mongodb/commande.controller";
 
 import {
   createType,
-  //deleteType,
+  deleteType,
   getAllType,
-  //updateType,
-  //getTypeById,
+  updateType,
+  getTypeById,
 } from "../controllers/mongodb/type.controller";
 
 const router = Router();
@@ -111,32 +111,32 @@ router.delete("/accountType/:id_type", deleteAccountType);
 
 router.post("/restaurant/", createRestaurant);
 router.get("/restaurant/", getAllRestaurant);
-//router.get("/restaurant/:id_person", getRestaurantById);
-//router.put("/restaurant/:id_person", updateRestaurant);
-//router.delete("/restaurant/:id_person", deleteRestaurant);
+router.get("/restaurant/:id_person", getRestaurantById);
+router.put("/restaurant/:id_person", updateRestaurant);
+router.delete("/restaurant/:id_person", deleteRestaurant);
 
 router.post("/article/", createArticle);
 router.get("/article/", getAllArticle);
-//router.get("/article/:article", getArticleById);
-//router.put("/article/:article", updateArticle);
-//router.delete("/article/:article", deleteArticle);
+router.get("/article/:article", getArticleById);
+router.put("/article/:article", updateArticle);
+router.delete("/article/:article", deleteArticle);
 
 router.post("/articleCommande/", createArticleCommande);
 router.get("/articleCommande/", getAllArticleCommande);
-//router.get("/articleCommande/:postal_code", getArticleCommandeById);
-//router.put("/articleCommande/:postal_code", updateArticleCommande);
-//router.delete("/articleCommande/:postal_code", deleteArticleCommande);
+router.get("/articleCommande/:postal_code", getArticleCommandeById);
+router.put("/articleCommande/:postal_code", updateArticleCommande);
+router.delete("/articleCommande/:postal_code", deleteArticleCommande);
 
 router.post("/commande/", createCommande);
 router.get("/commande/", getAllCommande);
-//router.get("/commande/:id_type", getCommandeById);
-//router.put("/commande/:id_type", updateCommande);
-//router.delete("/commande/:id_type", deleteCommande);
+router.get("/commande/:id_type", getCommandeById);
+router.put("/commande/:id_type", updateCommande);
+router.delete("/commande/:id_type", deleteCommande);
 
 router.post("/type/", createType);
 router.get("/type/", getAllType);
-//router.get("/type/:id_type", getTypeById);
-//router.put("/type/:id_type", updateType);
-//router.delete("/type/:id_type", deleteType);
+router.get("/type/:id_type", getTypeById);
+router.put("/type/:id_type", updateType);
+router.delete("/type/:id_type", deleteType);
 
 export default router;

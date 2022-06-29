@@ -3,7 +3,6 @@ import mongoose, {model, Schema, Document} from 'mongoose';
 //definitions interfaces
 
 interface article extends Document {
-    ID_article: Number,
     name: string,
     descritpion : String,
     price : Number,
@@ -14,13 +13,6 @@ interface article extends Document {
 
 
 const ArticleSchema = new Schema<article>({
-    ID_article: {
-        type: Number,
-        PrimaryKey: true,
-        autoIncrement: true,
-        required: true
-
-    },
     name: {
         type: String,
         required: true

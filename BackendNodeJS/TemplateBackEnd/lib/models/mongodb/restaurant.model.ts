@@ -3,7 +3,6 @@ import mongoose, {model, Schema, Document} from 'mongoose';
 //definitions interfaces
 
 interface restaurant extends Document {
-    ID_restaurant: Number,
     name: string,
     address : String,
     postal_code : Number,
@@ -13,13 +12,6 @@ interface restaurant extends Document {
 
 
 const RestaurantSchema = new Schema<restaurant>({
-    ID_restaurant: {
-        type: Number,
-        PrimaryKey: true,
-        autoIncrement: true,
-        required: true
-
-    },
     name: {
         type: String,
         required: true

@@ -3,7 +3,6 @@ import mongoose, {model, Schema, Document} from 'mongoose';
 //definitions interfaces
 
 interface command extends Document {
-    ID_command: Number,
     validation_date: Date,
     delivery_date : Date,
     account_id : Number,
@@ -13,13 +12,6 @@ interface command extends Document {
 
 
 const CommandSchema = new Schema<command>({
-    ID_command: {
-        type: Number,
-        PrimaryKey: true,
-        autoIncrement: true,
-        required: true
-
-    },
     validation_date: {
         type: Date,
         required: true
