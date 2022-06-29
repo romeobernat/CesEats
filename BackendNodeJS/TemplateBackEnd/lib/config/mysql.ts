@@ -1,7 +1,7 @@
-import { Account } from "../models/account.model";
-import { AccountType } from "../models/accountType.model";
-import { City } from "../models/city.model";
-import { Country } from "../models/country.model";
+import { Account } from "../models/mysql/account.model";
+import { AccountType } from "../models/mysql/accountType.model";
+import { City } from "../models/mysql/city.model";
+import { Country } from "../models/mysql/country.model";
 import {Sequelize} from "sequelize-typescript";
 
 export const mysql = new Sequelize({
