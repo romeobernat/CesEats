@@ -8,6 +8,7 @@ import CustomerView from '../views/roles/CustomerView.vue'
 import DeliveryManView from '../views/roles/DeliveryManView.vue'
 import Help from '../views/Help.vue'
 import Products from '../views/Products.vue'
+import RestaurateurView from '../views/Restaurateur/RestaurateurView.vue'
 
 
 
@@ -43,6 +44,11 @@ const routes: Array<RouteConfig> = [
     path: '/livreur',
     name: 'livreur',
     component: DeliveryManView
+  },
+  {
+    path: '/restaurateur',
+    name: 'Restaurateur',
+    component: RestaurateurView
   },
   {
     path: '/restaurants/:id/:name',

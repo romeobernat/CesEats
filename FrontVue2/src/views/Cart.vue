@@ -35,7 +35,7 @@ export default {};
 
 <style lang="scss" scoped>
 .hero {
-  //background: url("../assets/BN.jpg");
+  background: url("../assets/BN.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size:cover;

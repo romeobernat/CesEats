@@ -6,12 +6,16 @@
         <a href="/">
       <span class="green--text">CES</span><strong>EAT</strong>
         </a>
+        <div :key="index" v-for="(utilisateur, index) in utilisateur">
+        <h1>{{ utilisateur.firstName }}</h1>
+      </div>
     </v-toolbar-title>
     </div>
     <ul v-show="!mobile" class="sidebar">
       <li><router-link class="link" :to="{ name: 'HomeView'}">Restaurants</router-link></li>
       <li><router-link class="link" :to="{ name: 'Register'}">Authentification</router-link></li>
       <li><router-link class="link" :to="{ name: 'Cart'}">Panier</router-link></li>
+      <li><router-link class="link" :to="{ name: 'Restaurateur'}">Ajouter un restaurant</router-link></li>
     </ul>
     <div class="icon">
       <i @click="toggleMobileNav" v-show="mobile" class="far fa-bars" :class="{'icon-active': mobileNav}"></i>
@@ -21,6 +25,7 @@
         <li><router-link class="link" :to="{ name: 'HomeView'}">Home</router-link></li>
         <li><router-link class="link" :to="{ name: 'Login'}">Authentification</router-link></li>
         <li><router-link class="link" :to="{ name: 'Cart'}">Panier</router-link></li>
+        <li><router-link class="link" :to="{ name: 'Restaurateur'}">Ajouter un restaurant</router-link></li>
       </ul>
     </transition>
   </nav>
@@ -28,6 +33,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: "sidebar",
   data() {
@@ -36,15 +43,26 @@ export default {
     mobile:null,
     mobileNav:null,
     windowWidth:null,
+    utilisateur:null
    };
+  },
+   mounted(){
+    axios
+    .get('http://localhost:3000/account/')
+    .then((response) => {
+      console.log(response)
+      this.utilisateur = response.data.data;
+      console.log(this.utilisateur)
+    }).catch(err =>{
+      console.log(err);
+    })
+    window.addEventListener("scroll", this.updateScroll);
   },
   created() {
     window.addEventListener("resize", this.checkScreen);
     this.checkScreen();
   },
-  mounted() {
-    window.addEventListener("scroll", this.updateScroll);
-  },
+
   methods: {
     toggleMobileNav() {
       this.mobileNav= !this.mobileNav;

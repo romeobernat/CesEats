@@ -2,12 +2,14 @@ import express from 'express';
 require('./db_config/mongo.db');
 //import bodyParser from 'body-parser'
 // import cookieParser from "cookie-parser"
-// import cors from "cors"
 import {RestaurantRouter} from './routes/restaurant_route'
 import UserRoutes from './routes/user_route'
 import connection from "./db_config/sequelize.mysql";
+import cors from "cors"
 
 const router = express();
+
+router.use(cors());
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
