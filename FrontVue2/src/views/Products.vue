@@ -1,13 +1,8 @@
 <template>
   <div class="mt-3 mb-8">
-    <v-container class="pr-0 pl-0">
+    <v-container fluid>
       <h2>Produit</h2>
-      <!--v-row class="mt-5">
-        <MenusComponent :menus="menus"/>
-      </v-row-->
-      <v-row class="mt-5">
         <ProductsComponent/>
-      </v-row>
     </v-container>
   </div>
 </template>

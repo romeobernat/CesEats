@@ -1,10 +1,7 @@
 <template>
+  <v-contain>
+    <br><br><br>
     <section class="hero">
-        <div class="hero-text">
-            <h2>
-                Panier
-            </h2>
-        </div>
         <div class="dishes">
             <v-row>
                 <v-col>
@@ -27,6 +24,7 @@
             </v-card-actions>
         </div>
     </section>
+    </v-contain>
 </template>
 
 <script>
@@ -35,7 +33,7 @@ export default {};
 
 <style lang="scss" scoped>
 .hero {
-  background: url("../assets/BN.jpg");
+  //background: url("../assets/BN.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size:cover;

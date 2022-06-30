@@ -4,12 +4,17 @@
     <div class="branding">
       <v-toolbar-title class="ml-4">
         <a href="/">
-      <span class="green--text">CES</span><strong>EAT</strong>
+          <span class="green--text">CES</span><strong>EAT</strong>
         </a>
-        <div :key="index" v-for="(utilisateur, index) in utilisateur">
-        <h1>{{ utilisateur.firstName }}</h1>
-      </div>
-    </v-toolbar-title>
+      </v-toolbar-title>
+      <v-toolbar-title class="ml-4">
+        <span>||</span>
+      </v-toolbar-title>
+    </div>
+    <div class="branding" :key="index" v-for="(utilisateur, index) in utilisateur">
+      <v-toolbar-title class="ml-4">
+          <span class="green--text">{{ utilisateur.firstName }} </span><strong>{{ utilisateur.lastname }}</strong>
+      </v-toolbar-title>
     </div>
     <ul v-show="!mobile" class="sidebar">
       <li><router-link class="link" :to="{ name: 'HomeView'}">Restaurants</router-link></li>

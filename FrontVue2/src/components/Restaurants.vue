@@ -2,43 +2,17 @@
   <div id="restaurants-view" class="mt-3 mb-8">
     <v-container class="pr-0 pl-0">
       <v-row id="search-bars">
-        <v-col sm="12" md="12" lg="3">
-          <h2>Offres du moment</h2>
-        </v-col>
-        <v-col md="6" lg="4" >
+        <v-col md="6" lg="6" >
           <v-text-field hide-details prepend-icon="mdi-magnify" placeholder="Ville..." single-line></v-text-field>
         </v-col>
-        <v-col md="6" lg="4">
+        <v-col md="6" lg="6">
           <v-text-field hide-details prepend-icon="mdi-magnify" placeholder="Restaurant..." single-line></v-text-field>
         </v-col>
       </v-row>
 
       <v-row>
-        <v-col md="12" lg="3">
-          <v-card class="ma-auto" max-width="80%">
-            <v-list>
-              <v-list-item>Catégories :</v-list-item>
-                <v-list-item-group multiple>
-                  <template v-for="(category, i) in restau">
-                    <v-divider v-if="!category" :key="`divider-${i}`"></v-divider>
-                    <v-list-item v-else :key="`item-${category}`" active-class="text--accent-4">
-                    <template v-slot:default="{ active }">
-                      <v-list-item-content>
-                        <v-list-item-title>{{ restau.category}}</v-list-item-title>
-                      </v-list-item-content>
-                      <v-list-item-action>
-                        <v-checkbox :input-value="active" color="#00c668"></v-checkbox>
-                      </v-list-item-action>
-                    </template>
-                    </v-list-item>
-                  </template>
-                </v-list-item-group>
-            </v-list>
-          </v-card>
-        </v-col>
-
-        <v-col md="12" lg="9">
-          <v-card id="Card" :key="index" v-for="(restau, index) in restau" elevation="2" outlined class="restaurant-cards mb-5">
+        <v-col md="6" lg="6" :key="index" v-for="(restau, index) in restau">
+          <v-card id="Card" elevation="2" outlined class="restaurant-cards mb-5" min-height="220">
             <router-link :to="/restaurants/ + restau._id + '/' + nameForUrl(restau.name)" class="text-decoration-none">
               <v-row> 
                 <v-col sm="3">

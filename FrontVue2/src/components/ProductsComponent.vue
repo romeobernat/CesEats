@@ -1,29 +1,20 @@
 <template>
-  <div id="products-component">
-    <v-container>
+    <v-container class="pr-0 pl-0">
       <v-row >
-        <v-col md ="12" lg="12">
-          <v-sheet class="mx-auto" width="100%">
-            <v-slide-group class="pa-4" multiple show-arrows>
-              <v-slide-item :key="index" v-for="(produit, index) in produit">
-                <v-card outlined class="mx-auto rounded-xl" max-width="250" min-width="200">
-                  <v-img :src="produit.img" height="200px"/>
-                  <v-card-title>{{ produit.name }}</v-card-title>
-                  <v-card-subtitle>{{ produit.descritpion}}</v-card-subtitle>
-                  <v-card-subtitle>{{ produit.price }} €</v-card-subtitle>
-                  <v-card-subtitle> disponibilité :{{ produit.available }}</v-card-subtitle>
-                      <v-spacer></v-spacer>
-                    <v-btn icon class="mr-1" fab dark small color="#00c668">
-                      <v-icon> mdi-shopping </v-icon>
-                    </v-btn>
-                </v-card>
-              </v-slide-item>
-            </v-slide-group>
-          </v-sheet>
+        <v-col md ="4" lg="2" :key="index" v-for="(produit, index) in produit">
+              <v-card outlined class="rounded-xl" max-width="250" min-height="450" max-height="450">
+                <v-img :src="produit.img" height="200px"/>
+                <v-card-title>{{ produit.name }}</v-card-title>
+                <v-card-subtitle>{{ produit.descritpion}}</v-card-subtitle>
+                <v-card-subtitle>{{ produit.price }} €</v-card-subtitle>
+                <v-card-subtitle> disponibilité :{{ produit.available }} 
+                  <v-btn icon class="mr-1" fab dark small color="#00c668">
+                    <v-icon> mdi-shopping </v-icon>
+                  </v-btn></v-card-subtitle>
+              </v-card>
         </v-col>
       </v-row>
     </v-container>
-  </div>
 </template>
 
 <script>
@@ -31,10 +22,6 @@ import axios from 'axios'
 
 export default {
   name: 'ProductsComponent',
-  props: {
-    products: Array,
-    category: String
-  },
   data(){
     return{
       produit:null,
@@ -55,10 +42,5 @@ export default {
 </script>
 
 <style scoped>
-#products-component .v-card--reveal {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  opacity: 1 !important;
-}
+
 </style>

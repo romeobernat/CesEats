@@ -1,6 +1,5 @@
 <template>
   <div>
-    <br><br><br><br><br><br><br><br><br>
       <v-card id="v-card">
         <v-card-title>
           <span class="text-h4">Inscription</span>
@@ -16,7 +15,6 @@
               <v-select
                 v-model="role"
                 label="Rôle*"
-                required
               ></v-select>
             </v-col>
             </v-row>
@@ -134,7 +132,4 @@ export default {
 </script>
 
 <style scoped>
-#v-card {
-   
-}
 </style>
