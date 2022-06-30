@@ -1,5 +1,5 @@
 <template>
-    <v-card id="footer-component" class="text-center" color="#092525">
+    <v-footer id="footer-component" class="text-center" color="#092525">
       <v-container>
         <v-row>
           <v-col id="logo" sm="12" md="6">
@@ -34,7 +34,7 @@
           <v-icon size="24px">{{ icon }}</v-icon>
         </v-btn>
       </v-card-text>
-    </v-card>
+    </v-footer>
 </template>
 
 <script>

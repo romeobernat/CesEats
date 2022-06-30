@@ -74,6 +74,11 @@
                     v-model="zipCode"
                     label="Code postal"
                 ></v-text-field>
+                <v-select
+                v-model="zipCode"
+                label="Code postal*"
+                required
+              >{{zipCode}}</v-select>
               </v-col>
             </v-row>
           </v-container>
@@ -128,6 +133,7 @@ export default {
             console.log(response);     
     });
   },
+  
 }
 }
 </script>

@@ -13,19 +13,23 @@
     </div>
     <ul v-show="!mobile" class="sidebar">
       <li><router-link class="link" :to="{ name: 'HomeView'}">Restaurants</router-link></li>
-      <li><router-link class="link" :to="{ name: 'Register'}">Authentification</router-link></li>
+      <li><router-link class="link" :to="{ name: 'Register'}">S'inscrire</router-link></li>
+      <li><router-link class="link" :to="{ name: 'Login'}">Se connecter</router-link></li>
       <li><router-link class="link" :to="{ name: 'Cart'}">Panier</router-link></li>
-      <li><router-link class="link" :to="{ name: 'Restaurateur'}">Ajouter un restaurant</router-link></li>
+      <li>||</li>
+      <li><router-link class="link" :to="{ name: 'Restaurateur'}">Gestion Restaurant</router-link></li>
     </ul>
     <div class="icon">
       <i @click="toggleMobileNav" v-show="mobile" class="far fa-bars" :class="{'icon-active': mobileNav}"></i>
     </div>
     <transition name="mobile-nav">
       <ul v-show="mobileNav" class="dropdown-nav">
-        <li><router-link class="link" :to="{ name: 'HomeView'}">Home</router-link></li>
-        <li><router-link class="link" :to="{ name: 'Login'}">Authentification</router-link></li>
-        <li><router-link class="link" :to="{ name: 'Cart'}">Panier</router-link></li>
-        <li><router-link class="link" :to="{ name: 'Restaurateur'}">Ajouter un restaurant</router-link></li>
+        <li><router-link class="link" :to="{ name: 'HomeView'}">Restaurants</router-link></li>
+      <li><router-link class="link" :to="{ name: 'Register'}">S'inscrire</router-link></li>
+      <li><router-link class="link" :to="{ name: 'Login'}">Se connecter</router-link></li>
+      <li><router-link class="link" :to="{ name: 'Cart'}">Panier</router-link></li>
+      <li><hr></li>
+      <li><router-link class="link" :to="{ name: 'Restaurateur'}">Gestion Restaurant</router-link></li>
       </ul>
     </transition>
   </nav>
@@ -47,7 +51,7 @@ export default {
    };
   },
    mounted(){
-    axios
+    /*axios
     .get('http://localhost:3000/account/')
     .then((response) => {
       console.log(response)
@@ -55,7 +59,7 @@ export default {
       console.log(this.utilisateur)
     }).catch(err =>{
       console.log(err);
-    })
+    })*/
     window.addEventListener("scroll", this.updateScroll);
   },
   created() {

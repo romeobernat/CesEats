@@ -42,20 +42,15 @@
             <router-link :to="/restaurants/ + restau._id + '/' + nameForUrl(restau.name)" class="text-decoration-none">
               <v-row> 
                 <v-col sm="3">
-                  <!--v-img :src="restau.image" :alt="restau.name" height="100%"/-->
+                  <v-img :src="restau.img" :alt="restau.name" height="100%"/>
                 </v-col>
                 <v-col sm="9">
                   <div class="restaurant-theme">
                     <v-card-title > {{ restau.name }}</v-card-title>
-                    <div class="categories">
-                      <v-card-text>
-                        {{ restau.category }}
-                      </v-card-text>
-                    </div>
                   </div>
-                    <v-card-subtitle>{{ restau.description }}</v-card-subtitle>
+                    <v-card-subtitle>{{ restau.postal_code }}</v-card-subtitle>
                   <div class="restaurant-infos">
-                    <v-card-subtitle>{{ restau.adress }}</v-card-subtitle>
+                    <v-card-subtitle>{{ restau.address }}</v-card-subtitle>
                   </div>
                 </v-col>
               </v-row>
@@ -79,10 +74,10 @@ export default {
   },
   mounted(){
     axios
-    .get('http://localhost:7000/restaurant')
+    .get('http://localhost:3003/restaurant')
     .then((response) => {
       console.log(response)
-      this.restau = response.data;
+      this.restau = response.data.data;
       console.log(this.restau)
     }).catch(err =>{
       console.log(err);

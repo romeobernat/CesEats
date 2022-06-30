@@ -1,8 +1,18 @@
+
+
+
 <template>
    <div class="home">
     <section class="hero">
       <div class="hero-text container">
+        <div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+        <br>
         <Restaurateur/>
+        <br>
+        <UpdateRestaurantComponent/>
+        <br>
+        <DeleteRestaurantComponent/>
+        <br>
       </div>
     </section>
   </div>
@@ -10,10 +20,14 @@
 
 <script>
 import Restaurateur from "../../components/Restaurateur/RestaurateurComponent.vue";
+import UpdateRestaurantComponent from "../../components/Restaurateur/UpdateRestaurantComponent.vue";
+import DeleteRestaurantComponent from "../../components/Restaurateur/DeleteRestaurantComponent.vue";
 
 export default {
   components:{
     Restaurateur,
+    UpdateRestaurantComponent,
+    DeleteRestaurantComponent,
   }
 };
 </script>
@@ -23,14 +37,13 @@ export default {
   text-align: center;
 }
 .hero {
-  background: url("../../assets/login.jpg");
+  //background: url("../../assets/login.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size:cover;
   position: relative;
   height: 100vh;
   img {
-    object-fit: cover;
     height: 100%;
     width: 100%;
   }

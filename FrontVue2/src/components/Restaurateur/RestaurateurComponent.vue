@@ -16,36 +16,30 @@
             <v-row>
               <v-col cols="12" md="4">
                 <v-text-field
-                    v-model="Restaurant.Name"
+                    v-model="Name"
                     :rules="NameRules"
                     label="Nom*"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
-                    v-model="Restaurant.Adresse"
+                    v-model="Adresse"
                     :rules="AdresseRules"
                     label="Adresse*"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="4">
                 <v-text-field
-                    v-model="Restaurant.PostalCode"
+                    v-model="PostalCode"
+                    :rules="PostalCodeRules"
                     label="Postal Code"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
-                    v-model="Restaurant.Categorie"
-                    :rules="CategorieRules"
-                    label="Catégorie*"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" md="6">
-                <v-file-input
-                    v-model="Restaurant.Image"
+                    v-model="Image"
                     label="Image*"
-                ></v-file-input>
+                ></v-text-field>
               </v-col>
             </v-row>
           </v-container>
@@ -71,35 +65,22 @@ export default {
   name: 'RestaurateurComponent',
   data: () => ({
     NameRules: [
-      v => !!v || 'Veuillez renseigner un nom'
+      v => !!v || 'Veuillez renseigner un nom',
     ],
     AdresseRules: [
       v => !!v || 'Veuillez renseigner une adresse',
     ],
-    PostalCode: [
-      v => !!v || 'Veuillez renseigner un code Postal',
+    PostalCodeRules: [
+      v => /[0-9].*$/.test(v) || 'Format incorrect',
     ],
-    CategorieRules: [
-      v => !!v || 'Veuillez renseigner une catégorie'
-    ],
-    Restaurant: {
-      Name: '',
-      Adresse: '',
-      PostalCode:'',
-      Categorie: '',
-      Image: '',
-    },
     data(){
         return{
-            AddRestaurant:{
-                Name: '',
-                Adresse: '',
-                PostalCode:'',
-                Categorie: '',
-                Image: '',
+            Name: '',
+            Adresse: '',
+            PostalCode:null,
+            Image: '',
             }
         }
-    }
   }),
   /*mounted(){
     axios
@@ -113,14 +94,9 @@ export default {
     })
   },*/
   methods: {
-    createSubmit () {
-      if (this.$refs.AddRestaurantForm.validate()) {
-        this.$refs.AddRestaurantForm.reset()
-      }
-    },
     onCreatePost(){
         axios
-            .post('http://localhost:7000/restaurant/', {Name: this.Name, Adresse: this.Adresse, PostalCode: this.PostalCode, Categorie: this.Categorie},)
+            .post('http://localhost:3003/restaurant', {name: this.Name, address: this.Adresse, postal_code: this.PostalCode, img: this.Image},)
             .then((response) => {
             console.log(response);     
     });
