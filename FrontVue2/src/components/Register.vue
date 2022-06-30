@@ -119,7 +119,7 @@ export default {
    methods: {
     onCreatePost(){
         axios
-            .post('http://localhost:3000/account', {
+            .post('http://localhost:3002/account', {
               mail:this.mail, 
               password:this.pwd,
               postal_code_fk:this.zipCode,

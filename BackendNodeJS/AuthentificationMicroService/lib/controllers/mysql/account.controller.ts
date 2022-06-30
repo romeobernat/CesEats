@@ -1,5 +1,6 @@
+import bcrypt from 'bcrypt';
+import jwt from '../jwt';
 import {Request, Response, RequestHandler} from "express";
-import { and } from "sequelize/types";
 import { Account } from "../../models/mysql/account.model";
 
 export class AccountController {
@@ -51,21 +52,24 @@ export const updateAccount: RequestHandler = async (req, res, next) => {
 };
 
 export const isAccountTrue: RequestHandler = async (req, res, next) => {
-  const { mail } = req.params;
-  const { password } = req.params;
+  //const { mail } = { ...req.body }.mail;
+  //const { password } = { ...req.body }.password;
   const AccountTrue: Account | null = await Account.findOne({
     where: {
-      mail: mail,
-      password: password
+      mail: { ...req.body }.mail,
+      password: { ...req.body }.password
     }
   });
   if(AccountTrue != null){
-    return res
-    .status(200)
-    .json({ message: "The account exist", data: true });
+    return jwt.sign({
+      id: AccountTrue.id,
+      email: AccountTrue.mail,
+      name: AccountTrue.firstName,
+      role: AccountTrue.accountType,
+    });;
   }else{
     return res
-    .status(200)
+    .status(401)
     .json({ message: "The account doesn't exist", data: false });
   }
 };

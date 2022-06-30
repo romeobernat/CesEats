@@ -9,58 +9,64 @@
         <br><br><br>
       <v-content>
       <div class="hero-text container">
-       <v-card width="500" class="mx-auto mt-9">
-        <v-card-text>
-          <v-text-field 
-            v-model="username" 
-            :rules="usernameRules" 
-            label="E-mail" 
-            prepend-icon="mdi-email" 
-            required/>
+        <v-form @submit.prevent="onCreatePost" >
+          <v-card width="500" class="mx-auto mt-9">
+            <v-card-text>
+              <v-text-field 
+                v-model="mail" 
+                label="E-mail" 
+                prepend-icon="mdi-email" 
+                required/>
 
-          <v-text-field 
-          v-model="password" 
-          :rules="passwordRules" 
-          label="Password" 
-          required
-          prepend-icon="mdi-lock"
-          :append-icon="passwordShow ? 'fas fa-eye-slash' : 'fas fa-eye'"
-          @click:append="passwordShow = !passwordShow" 
-          :type="passwordShow ? 'text' : 'password'"
-          />
-        </v-card-text>
-        <v-divider></v-divider>
-          <v-card-actions>
-            <v-btn color="success" :to="{ name: 'Register'}">Register</v-btn>
-            <v-btn color="info">OK</v-btn>
-          </v-card-actions>
-      </v-card>
+              <v-text-field 
+              v-model="pwd" 
+              label="Password" 
+              required
+              prepend-icon="mdi-lock"
+              />
+            </v-card-text>
+            <v-divider></v-divider>
+              <v-card-actions>
+                <v-btn color="success" :to="{ name: 'Register'}">Register</v-btn>
+                <v-btn
+                  color="info"
+                  type="submit"
+                  >
+                  Ok
+                </v-btn>
+              </v-card-actions>
+          </v-card>
+        </v-form>
       </div>
       </v-content>
     </section>
   </div>
 </template>
 
-<script lang="ts">
+<script lang>
+import axios from 'axios';
+
 export default {
-    name: "Login",
-    data: () => ({
-    loginFail: false,
-    loading: false,
-    valid: true,
-    passwordShow: false,
-    password: '',
-    passwordRules: [
-      (v: string) => !!v || 'Password is required',
-      (v: string) => (v && v.length >= 5) || 'Password must be more than 5 characters',
-    ],
-    username: '',
-    usernameRules: [
-      (v: string) => !!v || 'Username is required',
-      //(v: string) => usernameRegex.test(v) || 'Username must be valid',
-    ]
-  }),
-};
+  name: "Login",
+  data(){
+    return{
+      mail:'',
+      pwd:'',
+    }
+  },
+  methods: {
+    onCreatePost(){
+        axios
+        .post('http://localhost:3001/account/login', {
+        mail:this.mail,
+        password:this.pwd,
+      })
+      .then((response) => {
+        console.log(response);
+      });
+    },
+  }
+}
 </script>
 
 <style lang="scss" scoped>
