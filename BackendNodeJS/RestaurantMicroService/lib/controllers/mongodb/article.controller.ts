@@ -1,10 +1,24 @@
 import Article from "../../models/mongodb/article.model"
+import Restaurant from "../../models/mongodb/restaurant.model"
 
 export const getAllArticle = async (req, res, next) => {
     const allArticle = await Article.find();
     return res
       .status(200)
       .json({ message: "Todo fetched successfully", data: allArticle });
+  };
+
+export const getAllArticleFromRestaurantId = async (req, res, next) => {
+  const { _id } = req.params;
+  const restaurant = await Restaurant.findById(_id);
+  const articles = await Article.find({
+      where: {
+        _id: restaurant.articles
+      }
+    });
+    return res
+      .status(200)
+      .json({ message: "Todo fetched successfully", data: articles });
   };
 
 export const createArticle = async (req, res, next) => {
