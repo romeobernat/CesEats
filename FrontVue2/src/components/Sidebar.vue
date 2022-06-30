@@ -59,7 +59,7 @@ export default {
       console.log(this.utilisateur)
     }).catch(err =>{
       console.log(err);
-    })*/
+    })
     window.addEventListener("scroll", this.updateScroll);
   },
   created() {

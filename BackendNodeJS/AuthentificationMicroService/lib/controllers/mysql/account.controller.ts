@@ -61,12 +61,19 @@ export const isAccountTrue: RequestHandler = async (req, res, next) => {
     }
   });
   if(AccountTrue != null){
-    return jwt.sign({
-      id: AccountTrue.id,
-      email: AccountTrue.mail,
-      name: AccountTrue.firstName,
-      role: AccountTrue.accountType,
-    });;
+    const token = await jwt.sign({
+      id_person: AccountTrue.id_person,
+      mail: AccountTrue.mail,
+      firstName: AccountTrue.firstName,
+      lastname: AccountTrue.lastname,
+      password: AccountTrue.password,
+      restaurant_id: AccountTrue.restaurant_id,
+      address: AccountTrue.address,
+      accountType: AccountTrue.accountType,
+    });
+    return res
+    .status(201)
+    .json({ message: "The account does exist", data: token});
   }else{
     return res
     .status(401)
