@@ -1,6 +1,7 @@
 <template>
   <div>
-      <v-card id="v-card" class="mx-auto">
+    <br><br><br><br><br><br><br><br><br>
+      <v-card id="v-card">
         <v-card-title>
           <span class="text-h4">Inscription</span>
         </v-card-title>
@@ -63,22 +64,17 @@
             <v-row>
               <v-col cols="12" md="4">
               </v-col>
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="9">
                 <v-text-field
                     v-model="address"
                     label="Adresse"
                 ></v-text-field>
               </v-col>
-              <v-col cols="4" md="2">
+              <v-col cols="4" md="3">
                 <v-text-field
                     v-model="zipCode"
                     label="Code postal"
                 ></v-text-field>
-                <v-select
-                v-model="zipCode"
-                label="Code postal*"
-                required
-              >{{zipCode}}</v-select>
               </v-col>
             </v-row>
           </v-container>
@@ -133,13 +129,12 @@ export default {
             console.log(response);     
     });
   },
-  
 }
 }
 </script>
 
 <style scoped>
 #v-card {
-    margin-top: 20px;
+   
 }
 </style>
