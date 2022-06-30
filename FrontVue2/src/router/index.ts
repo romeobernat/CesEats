@@ -9,6 +9,8 @@ import DeliveryManView from '../views/roles/DeliveryManView.vue'
 import Help from '../views/Help.vue'
 import Products from '../views/Products.vue'
 import RestaurateurView from '../views/Restaurateur/RestaurateurView.vue'
+import GestionProduitView from '../views/Restaurateur/GestionProduitView.vue'
+import GestionCompteView from '../views/GestionCompte/GestionCompteView.vue'
 
 
 
@@ -54,6 +56,16 @@ const routes: Array<RouteConfig> = [
     path: '/restaurants/:id/:name',
     name: 'Products',
     component: Products
+  },
+  {
+    path: '/gestionProduit',
+    name: 'GestionProduit',
+    component: GestionProduitView
+  },
+  {
+    path: '/gestionCompte',
+    name: 'GestionCompte',
+    component: GestionCompteView
   },
   {
     path: '/aide',

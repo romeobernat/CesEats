@@ -1,15 +1,14 @@
-
 <template>
    <div class="home">
     <section class="hero">
       <div class="hero-text container">
-        <div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <br>
-        <Restaurateur/>
+            <UpdateUserComponent/>
         <br>
-        <UpdateRestaurantComponent/>
+            <DeleteUserComponent/>
         <br>
-        <DeleteRestaurantComponent/>
+
         <br>
       </div>
     </section>
@@ -17,15 +16,13 @@
 </template>
 
 <script>
-import Restaurateur from "../../components/Restaurateur/RestaurateurComponent.vue";
-import UpdateRestaurantComponent from "../../components/Restaurateur/UpdateRestaurantComponent.vue";
-import DeleteRestaurantComponent from "../../components/Restaurateur/DeleteRestaurantComponent.vue";
+import DeleteUserComponent from "../../components/Gestion_compte/DeleteUserComponent.vue";
+import UpdateUserComponent from "../../components/Gestion_compte/UpdateUserComponent.vue";
 
 export default {
   components:{
-    Restaurateur,
-    UpdateRestaurantComponent,
-    DeleteRestaurantComponent,
+   DeleteUserComponent,
+   UpdateUserComponent
   }
 };
 </script>
