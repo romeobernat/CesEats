@@ -9,7 +9,7 @@ const errors = {
 
 // Constants
 const secret = (process.env.JWT_SECRET || randomString.generate(100)),
-    options = {expiresIn: process.env.COOKIE_EXP};
+    options = {expiresIn: process.env.COOKIE_EXP || "60m"};
 
 
 // Types

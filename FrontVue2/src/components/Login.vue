@@ -61,8 +61,8 @@ export default {
         mail:this.mail,
         password:this.pwd,
       })
-      .then((response) => {
-        console.log(response);
+      .then((response) => { 
+        console.log(response.data);
       });
     },
   }
