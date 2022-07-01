@@ -62,7 +62,8 @@ export default {
         password:this.pwd,
       })
       .then((response) => { 
-        console.log(response.data);
+        localStorage.setItem("JWT", response.data.data)
+            setAuthHeader(response.data.data);
       });
     },
   }

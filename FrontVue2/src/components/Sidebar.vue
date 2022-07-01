@@ -11,20 +11,21 @@
         <span>||</span>
       </v-toolbar-title>
     </div>
-    <div class="branding" :key="index" v-for="(utilisateur, index) in utilisateur">
+    <div class="branding" v-if="login">
       <v-toolbar-title class="ml-4">
-          <span class="green--text">{{ utilisateur.firstName }} </span><strong>{{ utilisateur.lastname }}</strong>
+          <span class="green--text">{{ firstname }}</span><strong>{{ lastname }}</strong>
       </v-toolbar-title>
     </div>
     <ul v-show="!mobile" class="sidebar">
       <li><router-link class="link" :to="{ name: 'HomeView'}">Restaurants</router-link></li>
-      <li><router-link class="link" :to="{ name: 'Register'}">S'inscrire</router-link></li>
-      <li><router-link class="link" :to="{ name: 'Login'}">Se connecter</router-link></li>
+      <li v-if="!login"><router-link class="link" :to="{ name: 'Register'}">S'inscrire</router-link></li>
+      <li v-if="!login"><router-link class="link" :to="{ name: 'Login'}">Se connecter</router-link></li>
       <li><router-link class="link" :to="{ name: 'Cart'}">Panier</router-link></li>
       <li>||</li>
       <li><router-link class="link" :to="{ name: 'Restaurateur'}">Gestion Restaurant</router-link></li>
       <li><router-link class="link" :to="{ name: 'GestionProduit'}">Gestion Produit</router-link></li>
       <li><router-link class="link" :to="{ name: 'GestionCompte'}">Gestion Compte</router-link></li>
+      <li v-if="login"><button @click="DeleteToken">Deconnexion</button></li>
 
 
     </ul>
@@ -34,13 +35,14 @@
     <transition name="mobile-nav">
       <ul v-show="mobileNav" class="dropdown-nav">
         <li><router-link class="link" :to="{ name: 'HomeView'}">Restaurants</router-link></li>
-      <li><router-link class="link" :to="{ name: 'Register'}">S'inscrire</router-link></li>
-      <li><router-link class="link" :to="{ name: 'Login'}">Se connecter</router-link></li>
+      <li v-if="!login"><router-link class="link" :to="{ name: 'Register'}">S'inscrire</router-link></li>
+      <li v-if="!login"><router-link class="link" :to="{ name: 'Login'}">Se connecter</router-link></li>
       <li><router-link class="link" :to="{ name: 'Cart'}">Panier</router-link></li>
       <li><hr></li>
       <li><router-link class="link" :to="{ name: 'Restaurateur'}">Gestion Restaurant</router-link></li>
       <li><router-link class="link" :to="{ name: 'GestionProduit'}">Gestion Produit</router-link></li>
       <li><router-link class="link" :to="{ name: 'GestionCompte'}">Gestion Compte</router-link></li>
+      <li v-if="login"><button @click="DeleteToken">Deconnexion</button></li>
       </ul>
     </transition>
   </nav>
@@ -48,7 +50,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 export default {
   name: "sidebar",
@@ -58,9 +61,20 @@ export default {
     mobile:null,
     mobileNav:null,
     windowWidth:null,
-    utilisateur:null
+    utilisateur:null,
+    login:null,
+    firstname:null,
+    lastname:null
    };
   },
+    beforeMount(){
+      this.login = this.isConnected();
+
+      let decoded = jwtDecode(localStorage.getItem("JWT"), { playload: true });
+
+      this.firstname = decoded.firstName;
+      this.lastname = decoded.lastname;
+    },
    mounted(){
     axios
     .get('http://localhost:3002/account/')
@@ -107,6 +121,20 @@ export default {
         return;
       }
     },
+
+    isConnected(){
+      if(localStorage.getItem("JWT") === null){
+        return false;
+      }else{
+        return true;
+      }
+    },
+
+    DeleteToken(){
+      localStorage.removeItem("JWT");
+      location.reload();
+    },
+
   },
 };
 </script>
