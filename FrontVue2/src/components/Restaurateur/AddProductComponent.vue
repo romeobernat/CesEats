@@ -58,8 +58,8 @@
               </v-col>
 
               <!--select v-model="selected">
-                <option v-for="Restaurant in Restaurants" value="Restaurant._id">
-                  {{ option.text }}
+                <option :key"index" v-for="(Restaurant, index) in Restaurants">
+                  {{ text: Restaurant.name, value: Restaurant._id}}
                 </option>
               </select>
               <span>Sélectionné : {{ selected }}</span-->
@@ -114,7 +114,7 @@ mounted(){
     .then((response) => {
       console.log(response)
       this.Restaurants = response.data.data;
-      console.log(this.Restaurants)
+      console.log(this.Restaurants);
     }).catch(err =>{
       console.log(err);
     })
