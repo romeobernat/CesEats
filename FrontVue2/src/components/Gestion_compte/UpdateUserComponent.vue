@@ -67,13 +67,6 @@
                     label="Adresse"
                 ></v-text-field>
               </v-col>
-                <v-col cols="12" md="2">
-                    <v-text-field
-                    v-model="id"
-                    :rules="IDRules"
-                    label="ID produit*">
-                    </v-text-field>
-                </v-col>
               <v-col cols="4" md="3">
                 <v-text-field
                     v-model="zipCode"
@@ -99,6 +92,7 @@
 
 <script>
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 export default {
   name: 'Register',
@@ -124,7 +118,7 @@ export default {
    methods: {
     onCreatePost(){
         axios
-            .put('http://localhost:3002/account/' + this.id, {
+            .put('http://localhost:3002/account/' + jwtDecode(localStorage.getItem("JWT"), { playload: true }).id_person, {
               mail:this.mail, 
               password:this.pwd,
               postal_code_fk:this.zipCode,
