@@ -53,16 +53,17 @@
               <v-col cols="12" md="3">
                 <v-text-field
                     v-model="restaurant"
-                    label="restaurant*"
+                    label="restaurant"
                 ></v-text-field>
               </v-col>
-
-              <!--select v-model="selected">
-                <option :key"index" v-for="(Restaurant, index) in Restaurants">
-                  {{ text: Restaurant.name, value: Restaurant._id}}
-                </option>
-              </select>
-              <span>Sélectionné : {{ selected }}</span-->
+              <!--v-col cols="12" md="3">
+                <select v-model="restaurant">
+                  <option v-for="Restaurant in Restaurants" v-bind:value="restaurant._id" :key="Restaurant._id" :index="index">
+                    {{ Restaurant.name }}
+                  </option>
+                </select>
+                <span>Restaurant : {{ restaurant }}</span>
+              </v-col-->
 
             </v-row>
           </v-container>
@@ -103,12 +104,12 @@ export default {
             Price:null,
             Image: '',
             Disponibilité:false,
-            Restaurants:null,
+            //Restaurants:null,
             }
         }
   }),
 
-mounted(){
+/*mounted(){
     axios
     .get('http://localhost:3003/restaurant/')
     .then((response) => {
@@ -118,7 +119,7 @@ mounted(){
     }).catch(err =>{
       console.log(err);
     })
-  },
+  },*/
 
   methods: {
     onCreatePost(){

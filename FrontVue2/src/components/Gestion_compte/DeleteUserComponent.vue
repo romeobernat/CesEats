@@ -4,42 +4,21 @@
         <v-card-title>
           <span class="text-h4">Supprimer un compte</span>
         </v-card-title>
-        <v-form
-            ref="registerForm"
-            @submit.prevent="onCreatePost"
-            lazy-validation
-        >
-          <v-container>
-            <v-card-title>
-              <span class="text-h6">Informations compte</span>
-            </v-card-title>
-            <v-row>
-              <v-col cols="12" md="12">
-                <v-text-field
-                    v-model="id"
-                    :rules="IDRules"
-                    label="ID Article*"
-                ></v-text-field>
-              </v-col>
-            </v-row>
-          </v-container>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
+
+        <v-btn
             color="#FF0000"
             class="mr-4 white--text"
-            type="submit"
+            @click="DeteteUser()"
             >
             Supprimer
-            </v-btn>
-        </v-card-actions>
-        </v-form>
+        </v-btn>
       </v-card>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
+import jwtDecode from 'jwt-decode';
 
 export default {
   name: 'DeleteProductComponent',
@@ -54,13 +33,15 @@ export default {
         }
   }),
   methods: {
-    onCreatePost(){
-        axios
-            .delete('http://localhost:3002/account/' + this.id)
-            .then((response) => {
-            console.log(response);     
-    });
-  },
+    DeteteUser(){
+      axios
+        .delete('http://localhost:3002/account/' + jwtDecode(localStorage.getItem("JWT"), { playload: true }).id_person)
+          .then((response) => {
+            console.log(response),
+            localStorage.removeItem("JWT"),
+            location.reload();
+            })
+    },
 }
 }
 </script>
