@@ -89,7 +89,7 @@
             class="mr-4 white--text"
             type="submit"
             >
-            Update
+            Modifier
             </v-btn>
         </v-card-actions>
         </v-form>

@@ -2,16 +2,16 @@
    <div class="home">
     <section class="hero">
       <div class="hero-text container">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br>
         <br>
             <UpdateUserComponent/>
         <br>
             <DeleteUserComponent/>
         <br>
-
         <br>
       </div>
     </section>
+    <br><br><br><br><br><br><br><br><br>
   </div>
 </template>
 

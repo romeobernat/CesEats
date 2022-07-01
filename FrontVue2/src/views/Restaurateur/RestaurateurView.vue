@@ -3,7 +3,7 @@
    <div class="home">
     <section class="hero">
       <div class="hero-text container">
-        <div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <br>
         <Restaurateur/>
         <br>
@@ -13,6 +13,7 @@
         <br>
       </div>
     </section>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
 </template>
 
