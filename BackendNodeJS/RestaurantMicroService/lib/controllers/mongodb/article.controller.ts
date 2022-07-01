@@ -11,11 +11,7 @@ export const getAllArticle = async (req, res, next) => {
 export const getAllArticleFromRestaurantId = async (req, res, next) => {
   const { _id } = req.params;
   const restaurant = await Restaurant.findById(_id);
-  const articles = await Article.find({
-      where: {
-        _id: restaurant.articles
-      }
-    });
+  const articles = await Article.find( {'_id' : { $in: restaurant.articles }} );
     return res
       .status(200)
       .json({ message: "Todo fetched successfully", data: articles });
@@ -23,6 +19,15 @@ export const getAllArticleFromRestaurantId = async (req, res, next) => {
 
 export const createArticle = async (req, res, next) => {
     var article = await Article.create({ ...req.body });
+    return res
+      .status(200)
+      .json({ message: "Todo created successfully", data: article });
+  };
+
+  export const createArticleForRestaurantId = async (req, res, next) => {
+    const { _id } = req.params;
+    var article = await Article.create({ ...req.body });
+    await Restaurant.findByIdAndUpdate({ _id }, {$push: {articles: article._id}});
     return res
       .status(200)
       .json({ message: "Todo created successfully", data: article });

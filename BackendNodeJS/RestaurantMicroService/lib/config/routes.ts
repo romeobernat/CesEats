@@ -52,6 +52,7 @@ import {
   updateArticle,
   getArticleById,
   getAllArticleFromRestaurantId,
+  createArticleForRestaurantId,
 } from "../controllers/mongodb/article.controller";
 
 import {
@@ -122,6 +123,7 @@ router.get("/article/:_id", getArticleById);
 router.put("/article/:_id", updateArticle);
 router.delete("/article/:_id", deleteArticle);
 router.get("/articleFromRestaurant/:_id", getAllArticleFromRestaurantId);
+router.post("/articleForRestaurantId/:_id", createArticleForRestaurantId);
 
 router.post("/articleCommande/", createArticleCommande);
 router.get("/articleCommande/", getAllArticleCommande);

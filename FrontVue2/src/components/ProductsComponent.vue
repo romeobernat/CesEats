@@ -29,9 +29,9 @@ export default {
   },
   mounted(){
     axios
-    .get('http://localhost:3003/article')
+    .get('http://localhost:3003/articleFromRestaurant/'+location.pathname.split('/')[2])
     .then((response) => {
-      console.log(response)
+      console.log(response.data.data);
       this.produit = response.data.data;
       console.log(this.produit)
     }).catch(err =>{
