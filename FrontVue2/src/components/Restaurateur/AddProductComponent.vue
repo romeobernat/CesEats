@@ -43,12 +43,27 @@
                   v-model="Disponibilité">
                 </v-checkbox>
               </v-col>
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="3">
                 <v-text-field
                     v-model="Image"
                     label="Image*"
                 ></v-text-field>
               </v-col>
+
+              <v-col cols="12" md="3">
+                <v-text-field
+                    v-model="restaurant"
+                    label="restaurant*"
+                ></v-text-field>
+              </v-col>
+
+              <!--select v-model="selected">
+                <option v-for="Restaurant in Restaurants" value="Restaurant._id">
+                  {{ option.text }}
+                </option>
+              </select>
+              <span>Sélectionné : {{ selected }}</span-->
+
             </v-row>
           </v-container>
         <v-card-actions>
@@ -88,13 +103,27 @@ export default {
             Price:null,
             Image: '',
             Disponibilité:false,
+            Restaurants:null,
             }
         }
   }),
+
+mounted(){
+    axios
+    .get('http://localhost:3003/restaurant/')
+    .then((response) => {
+      console.log(response)
+      this.Restaurants = response.data.data;
+      console.log(this.Restaurants)
+    }).catch(err =>{
+      console.log(err);
+    })
+  },
+
   methods: {
     onCreatePost(){
         axios
-            .post('http://localhost:3003/article', {name: this.Name, descritpion: this.Description, price: this.Price, img: this.Image, available: this.Disponibilité},)
+            .post('http://localhost:3003/articleForRestaurantId/'+this.restaurant, {name: this.Name, descritpion: this.Description, price: this.Price, img: this.Image, available: this.Disponibilité},)
             .then((response) => {
             console.log(response);     
     });
